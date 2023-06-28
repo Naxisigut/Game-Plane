@@ -1,5 +1,7 @@
 import { Application } from 'pixijs';
 
+export * from './plane'
+
 export const game = new Application({
   width: 500,
   height: 500
