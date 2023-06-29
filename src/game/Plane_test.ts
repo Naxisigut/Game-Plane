@@ -1,19 +1,19 @@
 import Bullet from './Bullet';
 
-export interface Plane {
-  x: number,
-  y: number,
-  speed: number,
-  bulletSpeed: number
-  bullets: Array<Bullet>
-  moveDown: ()=>void
-  moveUp: ()=>void
-  moveLeft: ()=>void
-  moveRight: ()=>void
-  attack: ()=>void
-  run: ()=>void
+// export interface Plane {
+//   x: number,
+//   y: number,
+//   speed: number,
+//   bulletSpeed: number
+//   bullets: Array<Bullet>
+//   moveDown: ()=>void
+//   moveUp: ()=>void
+//   moveLeft: ()=>void
+//   moveRight: ()=>void
+//   attack: ()=>void
+//   run: ()=>void
 
-}
+// }
 
 const defaultOpts = {
   x: 0, 
@@ -42,12 +42,7 @@ export const initPlane = (plane, bullets: Array<Bullet> = [], opts?): Plane  => 
   }
 
   plane.attack = ()=>{
-    const bullet = new Bullet({x: plane.x + 40, y: plane.y, speed: plane.bulletSpeed})
-    bullet.onDestroy = ()=>{
-      const index = bullets.indexOf(bullet)
-      bullets.splice(index, 1)
-    }
-    bullets.push(bullet)
+    bullets.push(new Bullet({x: plane.x + 40, y: plane.y, speed: plane.bulletSpeed}))
   }
 
   /* 子弹移动 */
@@ -59,3 +54,7 @@ export const initPlane = (plane, bullets: Array<Bullet> = [], opts?): Plane  => 
 
   return plane
 }
+
+export class Plane {
+  
+} 

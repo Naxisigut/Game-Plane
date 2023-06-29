@@ -1,6 +1,8 @@
 import { Application } from 'pixijs';
+import { Plane, initPlane } from './Plane';
+import { reactive } from 'vue';
 
-export * from './plane'
+export * from './Plane'
 
 export const game = new Application({
   width: 500,
@@ -8,3 +10,24 @@ export const game = new Application({
 })
 
 document.body.append(game.view as HTMLCanvasElement)
+
+const mainTicker = (plane: Plane)=>{
+
+  /* 帧循环子弹移动 */
+  game.ticker.add(()=>{
+    plane.run()
+  })
+}
+
+
+export const initGame = (_plane, bullets = reactive([]), opts?)=>{
+  const plane = initPlane(_plane, bullets, opts)
+
+  /* 帧循环 */
+  mainTicker(plane)
+
+  return{
+    plane, bullets
+  }
+}
+
