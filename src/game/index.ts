@@ -12,16 +12,14 @@ export const game = new Application({
 document.body.append(game.view as HTMLCanvasElement)
 
 const mainTicker = (plane: Plane)=>{
-
   /* 帧循环子弹移动 */
   game.ticker.add(()=>{
     plane.run()
   })
 }
 
-
-export const initGame = (_plane, bullets = reactive([]), opts?)=>{
-  const plane = initPlane(_plane, bullets, opts)
+export const initGame = (plane, bullets = [], opts?)=>{
+  initPlane(plane, bullets, opts)
 
   /* 帧循环 */
   mainTicker(plane)
@@ -30,4 +28,14 @@ export const initGame = (_plane, bullets = reactive([]), opts?)=>{
     plane, bullets
   }
 }
+// export const initGame = (_plane, bullets = [], opts?)=>{
+//   const plane = initPlane(_plane, bullets, opts)
+
+//   /* 帧循环 */
+//   mainTicker(plane)
+
+//   return{
+//     plane, bullets
+//   }
+// }
 

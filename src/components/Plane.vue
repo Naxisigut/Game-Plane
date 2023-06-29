@@ -16,7 +16,6 @@ const { plane } = defineProps({
   }
 })
 
-
 onMounted(()=>{
   window.addEventListener('keydown', planeActs)
 })

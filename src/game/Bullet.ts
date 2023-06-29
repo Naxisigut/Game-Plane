@@ -3,7 +3,6 @@ export default class Bullet{
   public y: number = 0
   public speed: number = 1
   public border: number = 0
-  public onDestroy: any
   public parent: any
 
   constructor(parent, opts?){
@@ -14,6 +13,11 @@ export default class Bullet{
   move(){
     this.y -= this.speed
     if(this.y < this.border)this.onDestroy()
+  }
+
+  onDestroy(){
+    const index = this.parent.bullets.indexOf(this)
+    this.parent.bullets.splice(index, 1)
   }
   
 }
