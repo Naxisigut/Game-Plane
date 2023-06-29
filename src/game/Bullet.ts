@@ -6,7 +6,8 @@ export default class Bullet{
   public onDestroy: any
   public parent: any
 
-  constructor(opts?){
+  constructor(parent, opts?){
+    this.parent = parent
     Object.assign(this, opts)
   }
 

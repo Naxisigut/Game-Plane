@@ -42,7 +42,7 @@ export const initPlane = (plane, bullets: Array<Bullet> = [], opts?): Plane  => 
   }
 
   plane.attack = ()=>{
-    const bullet = new Bullet({x: plane.x + 40, y: plane.y, speed: plane.bulletSpeed})
+    const bullet = new Bullet(plane, {x: plane.x + 40, y: plane.y, speed: plane.bulletSpeed})
     bullet.onDestroy = ()=>{
       const index = bullets.indexOf(bullet)
       bullets.splice(index, 1)
