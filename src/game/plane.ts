@@ -1,29 +1,13 @@
 import Bullet from './Bullet';
 
-// export interface Plane {
-//   x: number,
-//   y: number,
-//   speed: number,
-//   bulletSpeed: number
-//   bullets: Array<Bullet>
-//   moveDown: ()=>void
-//   moveUp: ()=>void
-//   moveLeft: ()=>void
-//   moveRight: ()=>void
-//   attack: ()=>void
-//   run: ()=>void
-
-// }
-
-
-export const initPlane = (plane, bullets: Array<Bullet> = [], opts?): Plane  => {
+export const initPlane = (plane:Plane, bullets: Array<Bullet> = [], opts?): Plane  => {
   Object.assign(plane, opts)
   plane.bullets = bullets
 
   return plane
 }
 
-export class Plane {
+export default class Plane {
   public x: number = 0
   public y: number = 0
   public speed: number = 5

@@ -1,41 +1,31 @@
 import { Application } from 'pixijs';
-import { Plane, initPlane } from './Plane';
-import { reactive } from 'vue';
+import { default as Plane,  initPlane } from './Plane';
+export { Plane, initPlane };
 
-export * from './Plane'
 
-export const game = new Application({
-  width: 500,
-  height: 500
-})
+/* 初始化容器 */
+const initContainer = ()=>{
+  return new Application({
+    width: 500, height: 500
+  })
+}
+export const container = initContainer()
 
-document.body.append(game.view as HTMLCanvasElement)
 
 const mainTicker = (plane: Plane)=>{
   /* 帧循环子弹移动 */
-  game.ticker.add(()=>{
+  container.ticker.add(()=>{
     plane.run()
   })
 }
-
-export const initGame = (plane, bullets = [], opts?)=>{
-  initPlane(plane, bullets, opts)
+/* 初始化游戏 */
+export const initGame = (plane: Plane)=>{
 
   /* 帧循环 */
   mainTicker(plane)
 
   return{
-    plane, bullets
+    plane, 
+    bullets: plane.bullets
   }
 }
-// export const initGame = (_plane, bullets = [], opts?)=>{
-//   const plane = initPlane(_plane, bullets, opts)
-
-//   /* 帧循环 */
-//   mainTicker(plane)
-
-//   return{
-//     plane, bullets
-//   }
-// }
-

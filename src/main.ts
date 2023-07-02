@@ -9,12 +9,15 @@
   // }
   
 import App from './App.vue'
-import { game } from './game';
-import { createApp } from './runtime-canvas';
+import { container } from './game';
+document.body.append(container.view as HTMLCanvasElement)
 
+
+
+import { createApp } from './runtime-canvas';
 const app = createApp(App)
 app.config.warnHandler = ()=>null
-app.mount(game.stage)
+app.mount(container.stage)
 
 
 
