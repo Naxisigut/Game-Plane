@@ -1,6 +1,6 @@
 <template>
-  <Container :x="enemyPlane.x" :y="enemyPlane.y" :width="50" :height="50">
-    <Sprite :texture="enemyPlaneImg"></Sprite>
+  <Container :x="enemyPlane.x" :y="enemyPlane.y">
+    <Sprite :texture="enemyPlaneImg" :width="enemyPlane.width" :height="enemyPlane.height"></Sprite>
   </Container>
 </template>
 

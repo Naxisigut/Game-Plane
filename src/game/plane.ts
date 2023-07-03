@@ -10,6 +10,8 @@ export const initPlane = (plane:Plane, bullets: Array<Bullet> = [], opts?): Plan
 export default class Plane {
   public x: number = 0
   public y: number = 0
+  public width: number = 100
+  public height: number = 100
   public speed: number = 5
   public bulletSpeed: number = 1
   public bullets: Array<Bullet> = []

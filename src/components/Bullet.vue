@@ -1,6 +1,6 @@
 <template>
   <Container :x="bullet.x" :y="bullet.y">
-    <Sprite :texture="bulletImg" :width="20" :height="20"></Sprite>
+    <Sprite :texture="bulletImg" :width="bullet.width" :height="bullet.height"></Sprite>
   </Container>
 </template>
 

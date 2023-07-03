@@ -1,6 +1,8 @@
 export default class EnemyPlane{
   public x: number = 0
   public y: number = 0
+  public width: number = 50
+  public height: number = 50
   public speed: number = 5
   public group: Array<EnemyPlane>
   public border: number = 500
