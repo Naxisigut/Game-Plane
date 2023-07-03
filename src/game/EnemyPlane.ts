@@ -3,7 +3,7 @@ export default class EnemyPlane{
   public y: number = 0
   public width: number = 50
   public height: number = 50
-  public speed: number = 5
+  public speed: number = 1
   public group: Array<EnemyPlane>
   public border: number = 500
   constructor(group: Array<EnemyPlane> , opts?){

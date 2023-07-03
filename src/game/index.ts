@@ -1,6 +1,7 @@
 import { Application } from 'pixijs';
 import { default as Plane,  initPlane } from './Plane';
 import { default as EnemyPlane, generateEnemy} from './EnemyPlane';
+import { hitCheck } from './hit';
 export { Plane, initPlane };
 
 
@@ -21,7 +22,18 @@ const mainTicker = (player: Plane, enemies: Array<EnemyPlane>)=>{
     /* 帧循环：敌军飞机移动 */
     enemies.forEach((enemy,index) => {
        enemy.move()
+
+       player.bullets.forEach((bullet,index) => {
+          if(hitCheck(bullet, enemy)){
+            bullet.onDestroy()
+            enemy.onDestroy()
+          } 
+            
+       })
     })
+
+    /* 帧循环：敌军碰撞子弹后销毁 */
+    // for(let )
   })
 
   
@@ -31,8 +43,8 @@ export const initGame = (player: Plane, enemies: EnemyPlane[])=>{
 
   /* 帧循环 */
   mainTicker(player, enemies)
-
-  generateEnemy(enemies)
+  
+  generateEnemy(enemies) // 生成敌军
   
 
   return{
