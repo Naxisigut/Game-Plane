@@ -19,21 +19,18 @@ const mainTicker = (player: Plane, enemies: Array<EnemyPlane>)=>{
     /* 帧循环：子弹移动 */
     player.run()
 
-    /* 帧循环：敌军飞机移动 */
     enemies.forEach((enemy,index) => {
-       enemy.move()
-
+      /* 帧循环：敌军飞机移动 */
+      enemy.move()
+      
+      /* 帧循环：敌军碰撞子弹后销毁 */
        player.bullets.forEach((bullet,index) => {
           if(hitCheck(bullet, enemy)){
             bullet.onDestroy()
             enemy.onDestroy()
-          } 
-            
+          }             
        })
     })
-
-    /* 帧循环：敌军碰撞子弹后销毁 */
-    // for(let )
   })
 
   
