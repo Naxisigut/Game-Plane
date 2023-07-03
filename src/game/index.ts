@@ -1,5 +1,6 @@
 import { Application } from 'pixijs';
 import { default as Plane,  initPlane } from './Plane';
+import { default as EnemyPlane, generateEnemy} from './EnemyPlane';
 export { Plane, initPlane };
 
 
@@ -12,20 +13,30 @@ const initContainer = ()=>{
 export const container = initContainer()
 
 
-const mainTicker = (plane: Plane)=>{
-  /* 帧循环子弹移动 */
+const mainTicker = (player: Plane, enemies: Array<EnemyPlane>)=>{
   container.ticker.add(()=>{
-    plane.run()
+    /* 帧循环：子弹移动 */
+    player.run()
+
+    /* 帧循环：敌军飞机移动 */
+    enemies.forEach((enemy,index) => {
+       enemy.move()
+    })
   })
+
+  
 }
 /* 初始化游戏 */
-export const initGame = (plane: Plane)=>{
+export const initGame = (player: Plane, enemies: EnemyPlane[])=>{
 
   /* 帧循环 */
-  mainTicker(plane)
+  mainTicker(player, enemies)
+
+  generateEnemy(enemies)
+  
 
   return{
-    plane, 
-    bullets: plane.bullets
+    player, 
+    bullets: player.bullets
   }
 }

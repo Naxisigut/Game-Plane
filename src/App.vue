@@ -11,11 +11,11 @@ const defaultOpts = {
   bulletSpeed: 5
 }
 
-const playerPlane = reactive(new Plane(defaultOpts))
+const player = reactive(new Plane(defaultOpts))
+const enemies = reactive([])
 
-initGame(playerPlane)
+initGame(player, enemies )
 
-const enemies = reactive([{x: 30, y: 40}])
 
 
 
@@ -23,8 +23,8 @@ const enemies = reactive([{x: 30, y: 40}])
 
 <template>
   <Container>
-    <PlaneVue :plane="playerPlane"></PlaneVue>
-    <BulletVue v-for="(bullet, index) in playerPlane.bullets" :key="index" :bullet="bullet"></BulletVue>
+    <PlaneVue :plane="player"></PlaneVue>
+    <BulletVue v-for="(bullet, index) in player.bullets" :key="index" :bullet="bullet"></BulletVue>
     <EnemyPlane v-for="(enemy, index) in enemies" :enemy-plane="enemy" :key="index"></EnemyPlane>
   </Container>  
 </template>
