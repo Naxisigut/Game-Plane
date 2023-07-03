@@ -28,16 +28,16 @@ const planeActs = (e: KeyboardEvent)=>{
 
   switch (e.code) {
     case 'ArrowDown':
-      plane.moveDown()
+      plane.move('down')
       break;
     case 'ArrowUp':
-      plane.moveUp()
+      plane.move('up')
       break;
     case 'ArrowLeft':
-      plane.moveLeft()
+      plane.move('left')
       break;
     case 'ArrowRight':
-      plane.moveRight()
+      plane.move('right')
       break;
     case 'Space':
       plane.attack()

@@ -20,17 +20,26 @@ export default class Plane {
     }
   }
 
-  moveDown(){
-    this.y += this.speed
-  }
-  moveUp(){
-    this.y -= this.speed
-  }
-  moveLeft(){
-    this.x -= this.speed
-  }
-  moveRight(){
-    this.x += this.speed
+  move(direction = 'down'){
+    switch (direction) {
+      case 'up':
+        this.y -= this.speed
+        break;
+      case 'down':
+        this.y += this.speed
+        break;
+      case 'left':
+        this.x -= this.speed
+        break;
+      case 'right':
+        this.x += this.speed
+        break;
+    
+      default:
+        // 默认向下移动
+        this.y += this.speed
+        break;
+    }
   }
   /* 攻击，生成子弹 */
   attack(){
