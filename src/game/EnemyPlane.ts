@@ -1,4 +1,6 @@
 import { getRandomElement } from '@/utils/array';
+import { getRandomNumber, getRandomNumberFactory } from '@/utils/number';
+import { contanierInfo } from '.';
 
 export default class EnemyPlane{
   public x: number = 0
@@ -55,6 +57,7 @@ export default class EnemyPlane{
 
 export const generateEnemy = (enemies: Array<EnemyPlane>, interval: number = 2000)=>{
   setInterval(()=>{
-    enemies.push(new EnemyPlane(enemies))
+    const x = getRandomNumber(0, contanierInfo.width)
+    enemies.push(new EnemyPlane(enemies, {x, y: 0}))
   }, interval)
 }

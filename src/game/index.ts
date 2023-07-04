@@ -6,13 +6,17 @@ import { playerBulletsAttack } from './fighting';
 export { Plane, initPlane, EnemyPlane, generateEnemy, hitCheck };
 
 
+const width = window.innerWidth -1
+const height = window.innerHeight -5
+export const contanierInfo = {
+  width, height
+}
+
 /* 初始化容器 */
 const initContainer = ()=>{
-  const width = window.innerWidth -1
-  const height = window.innerHeight -5
-
   return new Application({
-    width, height
+    width: contanierInfo.width, 
+    height: contanierInfo.height
   })
 }
 export const container = initContainer()
