@@ -8,8 +8,10 @@ export { Plane, initPlane, EnemyPlane, generateEnemy, hitCheck };
 
 /* 初始化容器 */
 const initContainer = ()=>{
+  const width = window.innerWidth
+  const height = window.innerHeight
   return new Application({
-    width: 500, height: 500
+    width, height
   })
 }
 export const container = initContainer()
