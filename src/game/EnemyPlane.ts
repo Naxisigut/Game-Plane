@@ -1,3 +1,5 @@
+import { getRandomElement } from '@/utils/array';
+
 export default class EnemyPlane{
   public x: number = 0
   public y: number = 0
@@ -6,8 +8,15 @@ export default class EnemyPlane{
   public speed: number = 1
   public group: Array<EnemyPlane>
   public border: number = 500
+  public movingDirection: "up" | 'down' | 'left' | 'right' 
+  public movingTimer: Timer
+  // public moveDirection: number 
   constructor(group: Array<EnemyPlane> , opts?){
     this.group = group
+    this.movingDirection = 'down'
+    this.movingTimer = setInterval(()=>{
+      this.movingDirection = getRandomElement(['down', 'left', 'right'])
+    }, 3000)
     Object.assign(this, opts)
   }
   move(direction = 'down'){
@@ -33,7 +42,11 @@ export default class EnemyPlane{
 
     if(this.y > this.border)this.onDestroy()
   }
+  autoMove(){
+    this.move(this.movingDirection)
+  }
   onDestroy(){
+    clearInterval(this.movingTimer)
     const index = this.group.indexOf(this)
     this.group.splice(index, 1)
   }

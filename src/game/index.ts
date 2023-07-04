@@ -22,7 +22,7 @@ const mainTicker = (player: Plane, enemies: Array<EnemyPlane>)=>{
 
     /* 帧循环：敌军移动 */
     for(const enemy of enemies){
-      enemy.move()
+      enemy.autoMove()
     }
 
     /* 帧循环：战斗 */
