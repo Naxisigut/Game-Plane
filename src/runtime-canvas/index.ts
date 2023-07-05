@@ -1,5 +1,5 @@
 import { createRenderer} from 'vue';
-import { Container, Text, Sprite, Texture } from 'pixi.js';
+import { Container, Text, Sprite, Texture, DisplayObjectEvents } from 'pixi.js';
 
 const renderer = createRenderer<Container, Container>({
   createElement(type){
@@ -24,9 +24,8 @@ const renderer = createRenderer<Container, Container>({
         (el as Sprite).texture = Texture.from(nextValue)
         break;
       case 'events':
-        for(const key in nextValue){
-          console.log(0, el);
-          (el as Sprite).on(key, nextValue[key])
+        for(const key in nextValue ){
+          (el as Sprite).on(key as keyof DisplayObjectEvents, nextValue[key])
         }
         break;
     
