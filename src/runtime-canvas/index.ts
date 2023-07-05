@@ -1,5 +1,5 @@
 import { createRenderer} from 'vue';
-import { Container, Text, Sprite, Texture } from 'pixijs';
+import { Container, Text, Sprite, Texture } from 'pixi.js';
 
 const renderer = createRenderer<Container, Container>({
   createElement(type){
@@ -22,6 +22,12 @@ const renderer = createRenderer<Container, Container>({
     switch (key) {
       case 'texture':
         (el as Sprite).texture = Texture.from(nextValue)
+        break;
+      case 'events':
+        for(const key in nextValue){
+          console.log(0, el);
+          (el as Sprite).on(key, nextValue[key])
+        }
         break;
     
       default:
