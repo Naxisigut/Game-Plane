@@ -1,4 +1,4 @@
-import { Application } from 'pixijs';
+import { Application } from 'pixi.js';
 import { default as Plane,  initPlane } from './Plane';
 import { default as EnemyPlane, generateEnemy} from './EnemyPlane';
 import { hitCheck } from './hit';
