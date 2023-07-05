@@ -2,12 +2,13 @@
 import PlaneVue from './components/Plane.vue';
 import BulletVue from './components/Bullet.vue';
 import EnemyPlane from './components/EnemyPlane.vue';
-import { initGame, Plane } from './game';
+import ActionsVue from './components/Actions.vue';
+import { contanierInfo, initGame, Plane } from './game';
 import { reactive } from 'vue';
+
 
 const width = window.innerWidth
 const height = window.innerHeight
-
 
 /* 玩家飞机默认配置 */
 const defaultOpts = {
@@ -34,6 +35,7 @@ initGame(player, enemies )
     <PlaneVue :plane="player"></PlaneVue>
     <BulletVue v-for="(bullet, index) in player.bullets" :key="index" :bullet="bullet"></BulletVue>
     <EnemyPlane v-for="(enemy, index) in enemies" :enemy-plane="enemy" :key="index"></EnemyPlane>
+    <ActionsVue :containerInfo="contanierInfo"></ActionsVue>
   </Container>  
 </template>
 
