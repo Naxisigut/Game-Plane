@@ -21,7 +21,7 @@ const initContainer = ()=>{
 }
 export const container = initContainer()
 
-
+/* 帧循环 */
 const mainTicker = (player: Plane, enemies: Array<EnemyPlane>)=>{
   container.ticker.add(()=>{
     /* 帧循环：子弹移动 */

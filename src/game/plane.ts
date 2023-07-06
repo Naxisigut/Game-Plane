@@ -1,3 +1,5 @@
+/* 玩家飞机 */
+
 import Bullet from './Bullet';
 
 export const initPlane = (plane:Plane, bullets: Array<Bullet> = [], opts?): Plane  => {

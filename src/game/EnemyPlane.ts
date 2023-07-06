@@ -1,5 +1,7 @@
+/* 敌方飞机 */
+
 import { getRandomElement } from '@/utils/array';
-import { getRandomNumber, getRandomNumberFactory } from '@/utils/number';
+import { getRandomNumber } from '@/utils/number';
 import { contanierInfo } from '.';
 
 export default class EnemyPlane{

@@ -1,3 +1,5 @@
+/* 子弹相关 */
+
 export default class Bullet{
   public x: number = 0
   public y: number = 0

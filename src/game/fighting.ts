@@ -1,3 +1,6 @@
+/* 战斗逻辑 */
+
+
 import { EnemyPlane, Plane, hitCheck } from "./";
 
 /* 玩家子弹攻击敌方飞机 */
