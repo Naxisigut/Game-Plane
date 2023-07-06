@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@pixi/utils": "7.2.4",
+    "pinia": "^2.1.4",
     "pixi.js": "^7.2.4",
     "vue": "^3.2.47"
   },
