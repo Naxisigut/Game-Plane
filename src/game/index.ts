@@ -3,20 +3,17 @@ import { default as Plane,  initPlane } from './Plane';
 import { default as EnemyPlane, generateEnemy} from './EnemyPlane';
 import { hitCheck } from './hit';
 import { playerBulletsAttack } from './fighting';
+import { useConfigStore } from '@/store/useConfigStore';
+import { storeToRefs } from 'pinia';
 export { Plane, initPlane, EnemyPlane, generateEnemy, hitCheck };
 
 
-const width = window.innerWidth -1
-const height = window.innerHeight -5
-export const contanierInfo = {
-  width, height
-}
-
+const { viewInfo } = storeToRefs(useConfigStore())
 /* 初始化容器 */
 const initContainer = ()=>{
   return new Application({
-    width: contanierInfo.width, 
-    height: contanierInfo.height
+    width: viewInfo.width, 
+    height: viewInfo.height
   })
 }
 export const container = initContainer()

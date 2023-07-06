@@ -1,40 +1,31 @@
 <template>
-  <Container :x="props.containerInfo.width - 70" :y="20">
-    <Sprite :texture="startImg" :width="50" :height="50" eventMode="static" :events="startEvents"></Sprite>
-    <!-- <Sprite :texture="pauseImg" :width="50" :height="50" eventMode="static" :events="pauseEvents"></Sprite> -->
+  <Container :x="viewInfo.width - 70" :y="20">
+    <Sprite v-if="isPaused" :texture="startImg" :width="50" :height="50" eventMode="static" :events="startEvents"></Sprite>
+    <Sprite v-else :texture="pauseImg" :width="50" :height="50" eventMode="static" :events="pauseEvents"></Sprite>
   </Container>
 </template>
 
 <script setup lang="ts">
 import startImg from '@/assets/img/start.png';
 import pauseImg from '@/assets/img/pause.png';
-import { ref } from 'vue';
-const props = defineProps({
-  containerInfo: {
-    type: Object,
-    required: true
-  }
-})
+import { ref, reactive } from 'vue';
+import { useConfigStore } from '@/store';
+import storeToRefs from 'pinia';
 
-const startEvents = ref({
+const { viewInfo } = storeToRefs(useConfigStore()) 
+
+const isPaused = ref<Boolean>(false)
+const startEvents = reactive({
   'pointerdown': (e)=>{
-    console.log(11, e);
+    // console.log(11, e);
+    isPaused.value = true
   }
 })
-
-const pauseEvents = ref({
+const pauseEvents = reactive({
   'pointerdown': (e)=>{
-    console.log(22, e);
+    isPaused.value = false
   }
 })
-
-const startClicked = (e)=>{
-  console.log(11, e);
-}
-
-const pauseClicked = (e)=>{
-  console.log(22, e);
-}
 
 console.log(props);
 </script>

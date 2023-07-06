@@ -2,7 +2,6 @@
 
 import { getRandomElement } from '@/utils/array';
 import { getRandomNumber } from '@/utils/number';
-import { contanierInfo } from '.';
 
 export default class EnemyPlane{
   public x: number = 0
@@ -56,10 +55,12 @@ export default class EnemyPlane{
   }
 }
 
-
+import { useConfigStore } from '@/store/index';
+import { storeToRefs } from 'pinia';
+const { viewInfo } = storeToRefs(useConfigStore()) 
 export const generateEnemy = (enemies: Array<EnemyPlane>, interval: number = 2000)=>{
   setInterval(()=>{
-    const x = getRandomNumber(0, contanierInfo.width)
+    const x = getRandomNumber(0, viewInfo.width)
     enemies.push(new EnemyPlane(enemies, {x, y: 0}))
   }, interval)
 }

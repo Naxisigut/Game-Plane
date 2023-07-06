@@ -3,19 +3,20 @@ import PlaneVue from './components/Plane.vue';
 import BulletVue from './components/Bullet.vue';
 import EnemyPlane from './components/EnemyPlane.vue';
 import ActionsVue from './components/Actions.vue';
-import { contanierInfo, initGame, Plane } from './game';
+import { initGame, Plane } from './game';
 import { reactive } from 'vue';
+import { useConfigStore } from '@/store';
+import storeToRefs from 'pinia';
 
 
-const width = window.innerWidth
-const height = window.innerHeight
+const { viewInfo } = storeToRefs(useConfigStore()) 
 
 /* 玩家飞机默认配置 */
 const defaultOpts = {
   speed: 5, 
   bulletSpeed: 5,
-  x: width / 2,
-  y: height - 100,
+  x: viewInfo.width / 2,
+  y: viewInfo.height - 100,
   width: 100, 
   height: 100, 
 }
@@ -35,7 +36,7 @@ initGame(player, enemies )
     <PlaneVue :plane="player"></PlaneVue>
     <BulletVue v-for="(bullet, index) in player.bullets" :key="index" :bullet="bullet"></BulletVue>
     <EnemyPlane v-for="(enemy, index) in enemies" :enemy-plane="enemy" :key="index"></EnemyPlane>
-    <ActionsVue :containerInfo="contanierInfo"></ActionsVue>
+    <ActionsVue></ActionsVue>
   </Container>  
 </template>
 
