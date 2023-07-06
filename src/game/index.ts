@@ -3,24 +3,17 @@ import { default as Plane,  initPlane } from './Plane';
 import { default as EnemyPlane, generateEnemy} from './EnemyPlane';
 import { hitCheck } from './hit';
 import { playerBulletsAttack } from './fighting';
-import { useConfigStore } from '@/store/useConfigStore';
-import { storeToRefs } from 'pinia';
 export { Plane, initPlane, EnemyPlane, generateEnemy, hitCheck };
 
 
-const { viewInfo } = storeToRefs(useConfigStore())
 /* 初始化容器 */
-const initContainer = ()=>{
-  return new Application({
-    width: viewInfo.width, 
-    height: viewInfo.height
-  })
+export const initApplication = (width: number, height: number)=>{
+  return new Application({ width, height })
 }
-export const container = initContainer()
 
 /* 帧循环 */
-const mainTicker = (player: Plane, enemies: Array<EnemyPlane>)=>{
-  container.ticker.add(()=>{
+const mainTicker = (app: Application, player: Plane, enemies: Array<EnemyPlane>)=>{
+  app.ticker.add(()=>{
     /* 帧循环：子弹移动 */
     player.run()
 
@@ -37,12 +30,12 @@ const mainTicker = (player: Plane, enemies: Array<EnemyPlane>)=>{
   
 }
 /* 初始化游戏 */
-export const initGame = (player: Plane, enemies: EnemyPlane[])=>{
-
+export const initGame = (pixiApp: Application, player: Plane, enemies: EnemyPlane[])=>{
+console.log(pixiApp);
   /* 帧循环 */
-  mainTicker(player, enemies)
+  mainTicker(pixiApp, player, enemies)
   
-  generateEnemy(enemies) // 生成敌军
+  generateEnemy(enemies, 2000, {width: pixiApp.view.clientWidth, height: pixiApp.view.clientHeight}) // 生成敌军
   
 
   return{

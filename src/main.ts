@@ -9,15 +9,22 @@
   // }
   
 import App from './App.vue'
-import { container } from './game';
-document.body.append(container.view as HTMLCanvasElement)
-
 
 
 import { createApp } from './runtime-canvas';
 const app = createApp(App)
+
+import { createPinia } from 'pinia';
+const pinia = createPinia()
+app.use(pinia)
+
+import { useAppStore } from './store';
+const { application} = useAppStore()
+
+document.body.append(application.view as HTMLCanvasElement)
+
 app.config.warnHandler = ()=>null
-app.mount(container.stage)
+app.mount(application.stage)
 
 
 

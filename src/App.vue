@@ -1,22 +1,22 @@
 <script setup lang="ts">
+
 import PlaneVue from './components/Plane.vue';
 import BulletVue from './components/Bullet.vue';
 import EnemyPlane from './components/EnemyPlane.vue';
 import ActionsVue from './components/Actions.vue';
 import { initGame, Plane } from './game';
 import { reactive } from 'vue';
-import { useConfigStore } from '@/store';
-import storeToRefs from 'pinia';
+import { useAppStore } from '@/store';
 
 
-const { viewInfo } = storeToRefs(useConfigStore()) 
+const appStore = useAppStore()
 
 /* 玩家飞机默认配置 */
 const defaultOpts = {
   speed: 5, 
   bulletSpeed: 5,
-  x: viewInfo.width / 2,
-  y: viewInfo.height - 100,
+  x: appStore.viewInfo.width / 2,
+  y: appStore.viewInfo.height - 100,
   width: 100, 
   height: 100, 
 }
@@ -24,7 +24,7 @@ const defaultOpts = {
 const player = reactive(new Plane(defaultOpts))
 const enemies = reactive([])
 
-initGame(player, enemies )
+initGame(appStore.application, player, enemies )
 
 
 

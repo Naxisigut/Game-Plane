@@ -1,5 +1,5 @@
 <template>
-  <Container :x="viewInfo.width - 70" :y="20">
+  <Container :x="appStore.viewInfo.width - 70" :y="20">
     <Sprite v-if="isPaused" :texture="startImg" :width="50" :height="50" eventMode="static" :events="startEvents"></Sprite>
     <Sprite v-else :texture="pauseImg" :width="50" :height="50" eventMode="static" :events="pauseEvents"></Sprite>
   </Container>
@@ -9,10 +9,9 @@
 import startImg from '@/assets/img/start.png';
 import pauseImg from '@/assets/img/pause.png';
 import { ref, reactive } from 'vue';
-import { useConfigStore } from '@/store';
-import storeToRefs from 'pinia';
+import { useAppStore } from '@/store';
 
-const { viewInfo } = storeToRefs(useConfigStore()) 
+const appStore = useAppStore()
 
 const isPaused = ref<Boolean>(false)
 const startEvents = reactive({
@@ -27,5 +26,4 @@ const pauseEvents = reactive({
   }
 })
 
-console.log(props);
 </script>
